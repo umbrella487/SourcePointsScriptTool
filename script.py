@@ -1,3 +1,7 @@
+#ArcGIS script tool for generating controls(horizontals only) for setting out the position of source points in a geophysical survey
+
+#Created by Francis Dowuona
+
 #import modules
 import arcpy
 import csv
