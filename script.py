@@ -17,7 +17,7 @@ coordinate_system = arcpy.GetParameterAsText(5)
 shot_points = arcpy.GetParameterAsText(6)
 
 #Declare local variables
-path = (arcpy.Describe(xy_table)).path + "\\"
+path = arcpy.os.path.dirname(xy_table) + "\\"
 eventLayer = "eventlyr"
 line = path + "line.shp"
 msgBox = ctypes.windll.user32.MessageBoxW
