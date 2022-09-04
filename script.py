@@ -17,14 +17,14 @@ coordinate_system = arcpy.GetParameterAsText(5)
 shot_points = arcpy.GetParameterAsText(6)
 
 #Declare local variables
-path = arcpy.os.path.dirname(xy_table) + "\\"
+path = arcpy.os.path.dirname(xy_table)
 eventLayer = "eventlyr"
-line = path + "line.shp"
+line = arcpy.os.path.join(path,"line.shp")
 msgBox = ctypes.windll.user32.MessageBoxW
 expression_for_pointIDS="getPointID(!FID!)"
 codeblock_for_expression = """def getPointID(val):
  return str( 2000 + int(val) * 2)"""
-shotpointscsv = path + "shotpoints.csv"
+shotpointscsv = arcpy.os.path.join(path,"ShotPoints.csv")
 
 #Define Process Function
 def generateShotPoints():
