@@ -5,7 +5,7 @@
 #import modules
 import arcpy
 import csv
-import ctypes
+import pythonaddins as pyadd
 
 #Get Parameters
 xy_table = arcpy.GetParameterAsText(0)
@@ -20,7 +20,6 @@ shot_points = arcpy.GetParameterAsText(6)
 path = arcpy.os.path.dirname(xy_table)
 eventLayer = "eventlyr"
 line = arcpy.os.path.join(path,"line.shp")
-msgBox = ctypes.windll.user32.MessageBoxW
 expression_for_pointIDS="getPointID(!FID!)"
 codeblock_for_expression = """def getPointID(val):
  return str( 2000 + int(val) * 2)"""
@@ -63,7 +62,7 @@ def generateShotPoints():
                     csvwriter.writerow(data)
     except arcpy.ExecuteError:
         for i in range(0, arcpy.GetMessageCount()):
-            msgBox(None, u'{0}'.format(arcpy.GetSeverity(i)),u'{0}'.format(arcpy.GetMessage(i)),0)
+            pyadd.MessageBox(arcpy.GetMessage(i),arcpy.GetSeverity(i),0)
 
 #Call Function
 generateShotPoints()
