@@ -1,6 +1,9 @@
-#ArcGIS script tool for generating controls(horizontals only) for setting out the position of source points in a geophysical survey
+"""
+ArcGIS script tool for generating controls(horizontals only) for setting out the 
+position of source points in a geophysical survey
 
-#Created by Francis Dowuona
+Created by Francis Dowuona
+"""
 
 #import modules
 import arcpy
@@ -28,6 +31,9 @@ shotpointscsv = arcpy.os.path.join(path,"ShotPoints.csv")
 #Define Process Function
 def generateShotPoints():
     try:
+        """
+        Process for generating source points preplots for geophysical survey
+        """
         #Make Event layer of input points
         arcpy.MakeXYEventLayer_management(xy_table, x_field, y_field, eventLayer, coordinate_system, "")
 
