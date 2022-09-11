@@ -60,7 +60,7 @@ def generateShotPoints():
 
         #If user chooses to export points on the GO!
         if export_to_file:
-            with open(shotpointscsv, 'w') as csvFile:
+            with open(shotpointscsv, 'wb') as csvFile:
                 csvwriter = csv.writer(csvFile, delimiter=',')
                 csvwriter.writerow(["POINTID","POINT_X","POINT_Y"])
                 for i in arcpy.da.SearchCursor(shot_points, ["POINTID","POINT_X","POINT_Y"]):
