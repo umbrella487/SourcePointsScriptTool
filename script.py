@@ -28,6 +28,7 @@ codeblock_for_expression = "def getPointID(val):\n return str( 2000 + int(val) *
 shotpointscsv = arcpy.os.path.join(path,"ShotPoints.csv")
 msgBox = ctypes.windll.user32.MessageBoxW
 
+
 #Define Process Function
 def generateShotPoints():
     try:
@@ -63,8 +64,8 @@ def generateShotPoints():
             with open(shotpointscsv, 'wb') as csvFile:
                 csvwriter = csv.writer(csvFile, delimiter=',')
                 csvwriter.writerow(["POINTID","POINT_X","POINT_Y"])
-                for i in arcpy.da.SearchCursor(shot_points, ["POINTID","POINT_X","POINT_Y"]):
-                    data = [i[0],i[1],i[2]]
+                for i in arcpy.da.SearchCursor(shot_points, ["POINTID","Shape@XY"]):
+                    data = [i[0],i[1][0],i[1][1]]
                     csvwriter.writerow(data)
     except arcpy.ExecuteError:
         for i in range(0, arcpy.GetMessageCount()):
